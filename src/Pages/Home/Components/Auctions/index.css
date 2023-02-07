@@ -1,0 +1,32 @@
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+	font-size: inherit;
+	color: currentColor;
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-prev:hover {
+	left: 10px;
+	z-index: 2;
+}
+
+.ant-carousel .slick-next,
+.ant-carousel .slick-next:hover {
+	right: 10px;
+	z-index: 2;
+}
+
+.ant-card {
+	border-radius: 0;
+}
+
+.ant-card:hover {
+	background: linear-gradient(
+		to right,
+		#e4b9d0 0%,
+		#be7eb4 50.56%,
+		#7b7bba 100%
+	);
+}

@@ -1,0 +1,153 @@
+.section1_img {
+	text-align: center;
+}
+
+.section1_img img {
+	width: 430px;
+}
+
+.section1_text h1 {
+	background: linear-gradient(
+		to right,
+		#e4b9d0 0%,
+		#be7eb4 50.56%,
+		#7b7bba 100%
+	);
+	font-size: 52px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: 700;
+}
+
+.section1_text h1 span {
+	background: linear-gradient(to right, #000 0%, #000 50.56%, #000 100%);
+	font-size: 52px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: 700;
+}
+
+.blacktheme h1 span {
+	background: linear-gradient(to right, #fff 0%, #fff 50.56%, #fff 100%);
+	font-size: 52px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: 700;
+}
+
+.section1_text h5 {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.blacktheme h5 {
+	color: #fff !important;
+}
+
+.section1_text p {
+	font-weight: normal;
+	line-height: 25.92px;
+	color: #000;
+	font-size: 20px;
+}
+
+.blacktheme p {
+	color: #fff !important;
+}
+
+.auction {
+	border-radius: 23.36px;
+	background: linear-gradient(
+		to right,
+		#e4b9d0 0%,
+		#be7eb4 50.56%,
+		#7b7bba 100%
+	);
+	padding: 7px 50px;
+	border: none;
+	font-weight: 700;
+	font-size: 14px;
+	margin-right: 15px;
+	transition: all 0.5s ease;
+}
+
+.auction:hover {
+	background: linear-gradient(
+		to right,
+		#7b7bba 0%,
+		#be7eb4 50.56%,
+		#e4b9d0 100%
+	);
+	color: white;
+}
+
+.collection {
+	border-radius: 23.36px;
+	background: #fff;
+	border: 2px solid #707070 !important;
+	padding: 6px 50px;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.blacktheme .collection {
+	background-color: #000;
+	color: #fff;
+}
+
+.collection:hover {
+	background: linear-gradient(
+		to right,
+		#7b7bba 0%,
+		#be7eb4 50.56%,
+		#e4b9d0 100%
+	);
+	color: white;
+	border: none !important;
+}
+
+@media (max-width: 767px) {
+	.section1_img {
+		margin-top: 40px;
+	}
+
+	.owner_upper_div {
+		margin-top: 45px;
+	}
+
+	.footer_links p {
+		margin-bottom: 0;
+		padding: 10px 10px;
+		font-weight: 800;
+		font-size: 14px;
+	}
+
+	.terms_of_services a {
+		font-size: 14px;
+	}
+
+	.copywright_container p {
+		font-size: 14px;
+	}
+
+	.about_heading h1 {
+		text-align: center;
+		font-size: 31px;
+	}
+
+	.section1_text h1 {
+		font-size: 33px;
+	}
+
+	.sign_email_div p {
+		font-size: 14px;
+	}
+
+	.connect_wallet {
+		margin-left: 0;
+	}
+
+	.nav-link {
+		margin-right: 10px;
+	}
+}

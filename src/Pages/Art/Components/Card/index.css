@@ -1,0 +1,37 @@
+.image-div {
+	box-shadow: 0px 0px 53px 9px rgba(0, 0, 0, 0.52);
+	-webkit-box-shadow: 0px 0px 53px 9px rgba(0, 0, 0, 0.52);
+	-moz-box-shadow: 0px 0px 53px 9px rgba(0, 0, 0, 0.52);
+}
+
+p {
+	margin: 0;
+}
+
+.subscribe-to-art-span {
+	height: 2.5rem;
+	border-radius: 0px;
+}
+
+.subscribe-to-art-input {
+	height: 2.5rem;
+	border-radius: 0px;
+}
+
+.subscribe-to-art-btn {
+	height: 2.5rem;
+	border-radius: 0px !important;
+}
+
+.subscribe-to-art-span > .center-div {
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.full-col {
+	float: none;
+	display: table-cell;
+	border: 2px solid purple;
+}

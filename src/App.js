@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { ConfigProvider } from "antd";
+import React from "react";
+import Header from "./Layouts/Header";
+import SignUpLayout from "./Layouts/SignUp";
+import FooterLayout from "./Layouts/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Main from "./Routes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const customTheme = {
+	token: {
+		colorPrimary: "#cc78d4",
+		colorLink: "red",
+	},
+	components: {
+		Button: {
+			borderRadius: "23.36px",
+			backgroundImage: "linear-gradient(to right, #cc78d4, #5f5f5f)",
+		},
+	},
+};
+
+const App = () => (
+	<ConfigProvider theme={customTheme}>
+		<div className="main-app">
+			<Header />
+			<Main />
+			<SignUpLayout />
+			<FooterLayout />
+		</div>
+	</ConfigProvider>
+);
 
 export default App;

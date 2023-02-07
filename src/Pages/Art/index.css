@@ -1,0 +1,4 @@
+.art-card > a,
+a:hover {
+	color: purple !important;
+}

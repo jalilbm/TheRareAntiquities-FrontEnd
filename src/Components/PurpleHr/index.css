@@ -1,0 +1,10 @@
+.gradient-purple-color {
+	height: 10px;
+	background: linear-gradient(
+		to right,
+		#e4b9d0 0%,
+		#993e8b 50.56%,
+		#5050a1 100%
+	);
+	border: none;
+}
