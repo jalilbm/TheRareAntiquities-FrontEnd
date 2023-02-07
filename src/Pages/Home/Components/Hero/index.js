@@ -9,7 +9,7 @@ const Fractionalized = () => {
 		<Container className="p-3">
 			<Row className="align-items-center">
 				<Col md={6}>
-					<div className=" section1_text">
+					<div className="section1_text">
 						<h1>
 							Shared Ownership <br />
 							<span>of</span> Fine Art
@@ -22,7 +22,7 @@ const Fractionalized = () => {
 							and sell your ownership when the art rises in value by selling
 							your NFT on the NFT Marketplace.
 						</p>
-						<div>
+						<div className="pt-3">
 							<Button
 								as={Link}
 								to="/#home-auctions-section"
