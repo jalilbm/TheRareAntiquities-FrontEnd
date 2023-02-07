@@ -191,17 +191,18 @@ export default function ArtCard(props) {
 										</div>
 									</div>
 									<div
+										className="mx-auto"
 										style={{
 											alignSelf: "flex-end",
 											width: "100%",
-											minWidth: "330px",
+											// minWidth: "330px",
 										}}
 									>
 										<div
 											className="my-5 mx-auto center-div"
 											style={{
-												width: "80%",
-												minWidth: "330px",
+												width: "95%",
+												maxWidth: "420px",
 											}}
 										>
 											<Input.Group
