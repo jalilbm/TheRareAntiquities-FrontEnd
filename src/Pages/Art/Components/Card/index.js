@@ -170,22 +170,37 @@ export default function ArtCard(props) {
 											</div>
 											<div className=".left-div">
 												<p className="pre-text">
-													Lot: {artData && artData.lot}
+													<span style={{ fontWeight: "600" }}>Lot: </span>
+													{artData && artData.lot}
 												</p>
 											</div>
 											<div className=".left-div">
 												<p className="measurement">
-													Measurement: {artData && artData.measurement}
+													<span style={{ fontWeight: "600" }}>
+														Measurement:{" "}
+													</span>
+													{artData && artData.measurement}
 												</p>
 											</div>
 											<div className=".left-div">
 												<p className="measurement">
-													Price Estimation: $
+													<span style={{ fontWeight: "600" }}>
+														Price Estimation:{" "}
+													</span>
+													$
 													{artData &&
 														artData.price_estimation_min.toLocaleString()}{" "}
 													- $
 													{artData &&
 														artData.price_estimation_max.toLocaleString()}
+												</p>
+											</div>
+											<div className=".left-div">
+												<p className="measurement">
+													<span style={{ fontWeight: "600" }}>
+														Description:{" "}
+													</span>
+													{artData && artData.head}
 												</p>
 											</div>
 										</div>
