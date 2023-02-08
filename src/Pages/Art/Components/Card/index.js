@@ -82,7 +82,7 @@ export default function ArtCard(props) {
 					<h4>
 						{artData &&
 							artData.collection_name &&
-							artData.collection_name + " Colection"}
+							artData.collection_name + " Collection"}
 					</h4>
 				</Container>
 			</Link>
