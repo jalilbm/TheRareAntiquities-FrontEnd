@@ -184,9 +184,7 @@ export default function ArtCard(props) {
 											</div>
 											<div className=".left-div">
 												<p className="measurement">
-													<span style={{ fontWeight: "600" }}>
-														Price Estimation:{" "}
-													</span>
+													<span style={{ fontWeight: "600" }}>Valuation: </span>
 													$
 													{artData &&
 														artData.price_estimation_min.toLocaleString()}{" "}
