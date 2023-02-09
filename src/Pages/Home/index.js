@@ -15,18 +15,18 @@ export default function Home() {
 	const [liveArtsData, setLiveArtsData] = useState([]);
 	const [upcomingArtsData, setUpcomingArtsData] = useState([]);
 	useEffect(() => {
-		axios
-			.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_arts/")
-			.then((response) => {
-				const data = response.data;
-				setArtsData(data);
-				setLiveArtsData(data.filter((obj) => obj.live === true));
-				setUpcomingArtsData(
-					data.filter(
-						(obj) => obj.live === false && obj.art_start_datetime !== null
-					)
-				);
-			});
+		// axios
+		// 	.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_arts/")
+		// 	.then((response) => {
+		// 		const data = response.data;
+		// 		setArtsData(data);
+		// 		setLiveArtsData(data.filter((obj) => obj.live === true));
+		// 		setUpcomingArtsData(
+		// 			data.filter(
+		// 				(obj) => obj.live === false && obj.art_start_datetime !== null
+		// 			)
+		// 		);
+		// 	});
 		axios
 			.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_collections/")
 			.then((response) => {

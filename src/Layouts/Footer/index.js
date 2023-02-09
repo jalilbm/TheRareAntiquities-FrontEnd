@@ -3,6 +3,7 @@ import "./index.css";
 import fbIcon from "../../Assets/LayoutsImages/fb.png";
 import twitterIcon from "../../Assets/LayoutsImages/twitter.png";
 import instagramIcon from "../../Assets/LayoutsImages/insta.png";
+import telegramIcon from "../../Assets/LayoutsImages/telegram.png";
 import linkedInIcon from "../../Assets/LayoutsImages/linkedin.png";
 import { Link } from "react-router-dom";
 
@@ -35,17 +36,36 @@ const Footer = () => {
 				</div>
 
 				<div className="social_icons">
-					<a href="" target="_blank" rel="noopener noreferrer">
+					<a href="#">
 						<img src={fbIcon} />
 					</a>
-					<a href="" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://twitter.com/TheRareAge"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img src={twitterIcon} />
 					</a>
-					<a href="" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://instagram.com/therareage?igshid=YmMyMTA2M2Y="
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img src={instagramIcon} />
 					</a>
-					<a href="" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://www.linkedin.com/company/therareage/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img src={linkedInIcon} />
+					</a>
+					<a
+						href="https://t.me/TheRareAge"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src={telegramIcon} />
 					</a>
 				</div>
 
