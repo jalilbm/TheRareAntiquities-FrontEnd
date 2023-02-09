@@ -26,7 +26,7 @@ const Fractionalized = () => {
 							<Button
 								as={Link}
 								to="/#home-auctions-section"
-								className="auction"
+								className="auction my-2"
 							>
 								Auctions
 							</Button>

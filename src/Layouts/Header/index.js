@@ -13,7 +13,11 @@ export default function MainHeader() {
 					<Container>
 						<div className="nav-bar-items">
 							<Navbar.Brand as={Link} to="/" className="d-md-none blackIcon">
-								<img src={RareAntiquitiesLogoBlack} alt="logo" />
+								<img
+									src={RareAntiquitiesLogoBlack}
+									alt="logo"
+									style={{ width: "70px" }}
+								/>
 							</Navbar.Brand>
 							<Navbar.Collapse
 								id="basic-navbar-nav"
