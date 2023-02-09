@@ -4,12 +4,13 @@ import AuctionsHome from "./Components/Auctions";
 import OwnershipHome from "./Components/Ownership";
 import CollectionsHome from "./Components/Collections";
 import AboutUsHome from "./Components/AboutUs";
+import FAQ from "./Components/FAQ";
 import axios from "axios";
 import "./index.css";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-	const [artsData, setArtsData] = useState(null);
+	const [artsData, setArtsData] = useState([]);
 	const [collectionsData, setCollectionsData] = useState([]);
 	const [liveArtsData, setLiveArtsData] = useState([]);
 	const [upcomingArtsData, setUpcomingArtsData] = useState([]);
@@ -40,11 +41,13 @@ export default function Home() {
 			<HrContainer />
 			<AboutUsHome />
 			<HrContainer />
-			<AuctionsHome liveArts={liveArtsData} upcomingArts={upcomingArtsData} />
-			<HrContainer />
-			<CollectionsHome collections={collectionsData} />
+			<AuctionsHome collectionsData={collectionsData} />
+			{/* <HrContainer /> */}
+			{/* <CollectionsHome collections={collectionsData} /> */}
 			<HrContainer />
 			<OwnershipHome />
+			<HrContainer />
+			<FAQ />
 			{/* <HrContainer /> */}
 		</div>
 	);

@@ -1,6 +1,8 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Home from "../Pages/Home";
 import Art from "../Pages/Art";
+import Auctions from "../Pages/Auctions";
+import Auction from "../Pages/Auction";
 import { useEffect } from "react";
 
 export default function Main() {
@@ -26,6 +28,8 @@ export default function Main() {
 		<Routes>
 			<Route exact path="/" element={<Home />} />
 			<Route exact path="/art/:artName" element={<Art />} />
+			<Route exact path="/auctions" element={<Auctions />} />
+			<Route exact path="/auction/:auctionName" element={<Auction />} />
 		</Routes>
 	);
 }
