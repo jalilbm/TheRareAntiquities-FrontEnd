@@ -15,7 +15,7 @@ export default function ArtCard(props) {
 				<div
 					className="center-div p-2 card-image-div"
 					style={{
-						height: "480px",
+						height: "100vh",
 						// window.innerWidth > 1000
 						// 	? "480px"
 						// 	: window.innerWidth > 767
@@ -32,7 +32,7 @@ export default function ArtCard(props) {
 							style={{
 								width: "100%",
 								objectFit: "contain",
-								// height: "100%",
+								height: "100vh",
 								borderRadius: "23px",
 								border: "none",
 							}}

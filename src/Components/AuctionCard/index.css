@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
 	.card-image-div {
-		height: 100px !important;
+		height: 100% !important;
 	}
 }

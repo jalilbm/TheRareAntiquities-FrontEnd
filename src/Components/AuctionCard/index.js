@@ -21,12 +21,12 @@ export default function ArtCard(props) {
 				<div
 					className="center-div p-2 card-image-div"
 					style={{
-						height:
-							window.innerWidth > 1000
-								? "450px"
-								: window.innerWidth > 767
-								? "300px"
-								: "100%",
+						height: "450px",
+						// window.innerWidth > 1000
+						// 	? "450px"
+						// 	: window.innerWidth > 767
+						// 	? "300px"
+						// 	: "100%",
 						border: "none",
 					}}
 				>
