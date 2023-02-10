@@ -11,6 +11,7 @@ export default function Home() {
 			.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_collections/")
 			.then((response) => {
 				const data = response.data;
+
 				setCollectionsData(data);
 			});
 	}, []);

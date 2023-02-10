@@ -60,7 +60,9 @@ export default function ArtCard(props) {
 								>
 									<div className="center-div mt-3">
 										<div style={{ display: "flex", flexDirection: "column" }}>
-											<h2 className="my-0">{artData && artData.name}</h2>
+											<h2 className="my-0">{`${
+												artData && artData.artist_name
+											} - ${artData && artData.name}`}</h2>
 											<div style={{ display: "flex", justifyContent: "left" }}>
 												<div className="center-div py-2">
 													{artData && artData.live ? (

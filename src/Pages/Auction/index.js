@@ -33,6 +33,7 @@ export default function Home() {
 			)
 			.then((response) => {
 				const data = response.data;
+
 				setAuctionData(data);
 			});
 		axios
@@ -44,7 +45,10 @@ export default function Home() {
 			)
 			.then((response) => {
 				const data = response.data;
-				setAuctionsArtsData(data);
+				const sortedArtsData = response.data.sort((a, b) => {
+					return a.lot - b.lot;
+				});
+				setAuctionsArtsData(sortedArtsData);
 			});
 		axios
 			.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_collections/")
