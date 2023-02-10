@@ -36,7 +36,7 @@ export default function ArtCard(props) {
 							src={card.image}
 							style={{
 								width: "100%",
-								objectFit: "contain",
+								objectFit: "cover",
 								// height: "100%",
 								borderRadius: "23px",
 								border: "none",

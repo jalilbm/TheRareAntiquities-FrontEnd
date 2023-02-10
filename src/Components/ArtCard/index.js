@@ -27,12 +27,13 @@ export default function ArtCard(props) {
 				>
 					<div className="center-div h-100">
 						<img
+							className="p-1"
 							alt={card.title}
 							src={card.image}
 							style={{
 								width: "100%",
 								objectFit: "cover",
-								height: "100%",
+								// height: "100%",
 								borderRadius: "23px",
 								border: "none",
 							}}
