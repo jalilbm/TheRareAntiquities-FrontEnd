@@ -7,75 +7,17 @@ import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { Button, Input, message } from "antd";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
-import axios from "axios";
 import { useState } from "react";
+import BidInputAndButtons from "./Components/bidInputAndButtons";
 
 export default function ArtCard(props) {
 	const artData = props.artData;
-	const [messageApi, contextHolder] = message.useMessage();
-	const [subscriberEmail, setSubscriberEmail] = useState("");
-
-	const updateSubscriber = (event) => {
-		let { value } = event.target;
-		setSubscriberEmail(value);
-	};
-
-	const validateEmail = (email) => {
-		return String(email)
-			.toLowerCase()
-			.match(/^\S+@\S+\.\S+$/);
-	};
-
-	const handleSubscribe = () => {
-		if (!validateEmail(subscriberEmail)) {
-			messageApi.open({
-				type: "error",
-				content: "Invalid email address provided",
-			});
-			return;
-		}
-		messageApi.open({
-			type: "loading",
-			content: "Please wait...",
-			duration: 1,
-		});
-		axios
-			.post(
-				process.env.REACT_APP_BACKEND_BASE_URL + `/api/website/subscribe/`,
-				{
-					email: subscriberEmail,
-				}
-			)
-			.then((response) => {
-				if (response.status === 200) {
-					messageApi.open({
-						type: "success",
-						content: "You have subscribed successfully!",
-						duration: 5,
-					});
-				} else {
-					messageApi.open({
-						type: "error",
-						content: "Sorry we could not subscribe you, please try again later",
-						duration: 5,
-					});
-				}
-			})
-			.catch(() => {
-				messageApi.open({
-					type: "error",
-					content: "Sorry we could not subscribe you, please try again later",
-					duration: 5,
-				});
-			});
-	};
 
 	return (
 		<div className="art-card" style={{ backgroundColor: "white" }}>
-			{contextHolder}
 			<Link
 				className="collection-link"
-				to="#"
+				to={artData ? `/auction/${artData.collection_name}/` : "#"}
 				style={{ textDecoration: "none" }}
 			>
 				<Container>
@@ -94,7 +36,7 @@ export default function ArtCard(props) {
 								className="w-100"
 								style={{ height: "100%", position: "relative" }}
 							>
-								<Col md={6}>
+								<Col md={6} className="center-div">
 									<div className="center-div">
 										<div
 											className="center-div p-4 image-div"
@@ -204,52 +146,28 @@ export default function ArtCard(props) {
 										</div>
 									</div>
 									<div
-										className="mx-auto"
+										className="mx-auto my-5"
 										style={{
 											alignSelf: "flex-end",
 											width: "100%",
+											display: "flex",
+											flexDirection: "column",
+											justifyContent: "center",
+											alignItems: "center",
 											// minWidth: "330px",
 										}}
 									>
+										<BidInputAndButtons
+											artData={artData}
+											artName={props.artName}
+										/>
 										<div
-											className="my-5 mx-auto center-div"
+											className="my-2"
 											style={{
 												width: "95%",
 												maxWidth: "420px",
 											}}
-										>
-											<Input.Group
-												compact
-												className="subscribe-to-art-span center-div"
-											>
-												<div className="center-div w-100">
-													<Input
-														style={{
-															width: "100%",
-															border: "0.5px solid purple",
-														}}
-														placeholder="Email"
-														type="email"
-														className="subscribe-to-art-input"
-														onChange={(event) => updateSubscriber(event)}
-														value={subscriberEmail}
-													/>
-													<Button
-														type="primary"
-														className="subscribe-to-art-btn"
-														onClick={handleSubscribe}
-														style={{
-															border: "0.5px solid purple",
-														}}
-													>
-														Subscribe
-													</Button>
-												</div>
-												<div className="center-div">
-													<p>Subscribe to get latest news</p>
-												</div>
-											</Input.Group>
-										</div>
+										></div>
 									</div>
 								</Col>
 							</Row>

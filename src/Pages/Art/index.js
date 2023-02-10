@@ -20,7 +20,7 @@ export default function Art() {
 	}, []);
 	return (
 		<div className="auction-page">
-			<Card artData={artData} />
+			<Card artData={artData} artName={artName} />
 			<Container>
 				<h4 className="m-0" style={{ color: "purple" }}>
 					Description

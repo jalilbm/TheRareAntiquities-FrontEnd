@@ -1,0 +1,17 @@
+.auction-bid-button {
+	height: 2.5rem;
+}
+.auction-bid-buttons {
+	/* padding: 1.5rem; */
+	/* width: 80%; */
+}
+.auction-bid-buttons > .auction-bid-button {
+	border-radius: 0px;
+	width: 45%;
+}
+
+.bid-amount {
+	height: 2.5rem;
+	/* width: 80%; */
+	border-radius: 0px;
+}
