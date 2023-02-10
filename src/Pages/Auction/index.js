@@ -48,9 +48,9 @@ export default function Home() {
 			});
 		axios
 			.get(process.env.REACT_APP_BACKEND_BASE_URL + "/api/get_all_collections/")
+
 			.then((response) => {
 				const data = response.data;
-
 				setAuctionsData(data.filter((obj) => obj.name !== auctionName));
 			});
 	}, [location]);
@@ -89,7 +89,7 @@ export default function Home() {
 							<h6 className="m-0">View Timing</h6>
 						</div>
 					</div>
-					<Row>
+					<Row className="d-flex justify-content-center">
 						{auctionArtsData.map((card) => (
 							<Col md={4}>
 								<Link

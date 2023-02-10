@@ -54,7 +54,9 @@ export default function ArtCard(props) {
 				description={
 					<div>
 						<p className="my-1" style={{ color: "white !important" }}>
-							{card.head}
+							{card.head.length > 50
+								? card.head.substring(0, 47) + "..."
+								: card.head}
 						</p>
 						<div
 							style={{

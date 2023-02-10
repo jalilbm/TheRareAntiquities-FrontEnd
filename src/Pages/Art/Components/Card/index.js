@@ -116,14 +116,24 @@ export default function ArtCard(props) {
 													{artData && artData.lot}
 												</p>
 											</div>
-											<div className=".left-div">
-												<p className="measurement">
-													<span style={{ fontWeight: "600" }}>
-														Measurement:{" "}
-													</span>
-													{artData && artData.measurement}
-												</p>
-											</div>
+											{artData && artData.artist_name && (
+												<div className=".left-div">
+													<p className="artist_name">
+														<span style={{ fontWeight: "600" }}>Artist: </span>
+														{artData && artData.artist_name}
+													</p>
+												</div>
+											)}
+											{artData && artData.measurement && (
+												<div className=".left-div">
+													<p className="measurement">
+														<span style={{ fontWeight: "600" }}>
+															Measurement:{" "}
+														</span>
+														{artData && artData.measurement}
+													</p>
+												</div>
+											)}
 											<div className=".left-div">
 												<p className="measurement">
 													<span style={{ fontWeight: "600" }}>Valuation: </span>

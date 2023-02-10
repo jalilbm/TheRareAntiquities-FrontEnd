@@ -28,7 +28,7 @@ export default function AuctionsHome(props) {
 					<div>
 						<Container>
 							<div className="mx-auto">
-								<Row>
+								<Row className="d-flex justify-content-center">
 									{props.collectionsData.map((card) => (
 										<Col md={4}>
 											<Link
