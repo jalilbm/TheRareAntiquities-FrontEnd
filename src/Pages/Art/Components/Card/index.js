@@ -58,7 +58,7 @@ export default function ArtCard(props) {
 									className="full-col my-4"
 									style={{ position: "relative" }}
 								>
-									<div className="center-div mt-3">
+									<div className="mt-3">
 										<div style={{ display: "flex", flexDirection: "column" }}>
 											<h2 className="my-0">{`${
 												artData && artData.artist_name
@@ -74,7 +74,7 @@ export default function ArtCard(props) {
 															</div>
 															<div>
 																<p className="px-1 m-0 text-danger">
-																	Live Auctions{" "}
+																	Live Auctions
 																</p>
 															</div>
 														</>

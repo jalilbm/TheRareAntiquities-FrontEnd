@@ -94,21 +94,24 @@ export default function Home() {
 						</div>
 					</div>
 					<Row className="d-flex justify-content-center">
-						{auctionArtsData.map((card) => (
-							<Col md={4}>
-								<Link
-									to={`/art/${card.name}/`}
-									style={{ textDecoration: "none" }}
-								>
-									<div
-										className="primary-gradient-background p-1 my-2"
-										style={{ borderRadius: "23px", border: "none" }}
-									>
-										<ArtCard card={card} />
-									</div>
-								</Link>
-							</Col>
-						))}
+						{auctionArtsData.map(
+							(card) =>
+								card.name !== "test" && (
+									<Col md={4}>
+										<Link
+											to={`/art/${card.name}/`}
+											style={{ textDecoration: "none" }}
+										>
+											<div
+												className="primary-gradient-background p-1 my-2"
+												style={{ borderRadius: "23px", border: "none" }}
+											>
+												<ArtCard card={card} />
+											</div>
+										</Link>
+									</Col>
+								)
+						)}
 					</Row>
 					<hr className="my-5"></hr>
 					<Row>

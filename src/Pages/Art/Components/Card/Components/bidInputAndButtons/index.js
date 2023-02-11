@@ -3,6 +3,9 @@ import { useState, useContext, useMemo, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
 import Modal from "../../../../../../Components/Modal";
+import { useLocation } from "react-router-dom";
+
+// import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 var regexp = /^\d+(\.\d{1,18})?$/;
 
@@ -13,14 +16,18 @@ export default function BidInputAndButtons(props) {
 	const [bidData, setBidData] = useState({
 		bidEmail: null,
 		artName: props.artName,
-		projectURL: window.location.href,
+		artURL: window.location.href
+			.replace("?payment_status=success", "")
+			.replace("?payment_status=success", ""),
 		bidAmount: null,
 	});
 	const [subscriberEmail, setSubscriberEmail] = useState("");
 	const [showEmailModel, setShowEmailModel] = useState(false);
 	const [bidMethod, setBidMethod] = useState("");
-
-	const artData = props.artData;
+	const [artData, setArtData] = useState(props.artData);
+	const location = useLocation();
+	const params = new URLSearchParams(location.search);
+	const paymentStatus = params.get("payment_status");
 	const changeMethod = (method) => {
 		setBidMethod(method);
 	};
@@ -118,7 +125,6 @@ export default function BidInputAndButtons(props) {
 	}
 
 	function getPaymentCheckoutUrl(bidMethod) {
-		console.log("hahahahaha", bidMethod, bidMethod === "card", bidData);
 		let url = "";
 		if (bidMethod === "card") {
 			url =
@@ -137,6 +143,59 @@ export default function BidInputAndButtons(props) {
 		});
 	}
 
+	useEffect(() => {
+		// const socket = new WebSocket(
+		// 	"ws://" +
+		// 		process.env.REACT_APP_BACKEND_BASE_URL.replace("http://", "").replace(
+		// 			"https://",
+		// 			""
+		// 		) +
+		// 		`/ws/${props.artName}/`
+		// );
+
+		// console.log(1, socket);
+
+		// socket.onmessage = (event) => {
+		// 	console.log(event.data);
+		// 	// setData(JSON.parse(event.data).data);
+		// };
+
+		// socket.onclose = (event) => {
+		// 	console.error("WebSocket closed with code: " + event.code);
+		// };
+
+		// return () => {
+		// 	socket.close();
+		// };
+		if (paymentStatus === "success")
+			messageApi.open({
+				type: "success",
+				content:
+					"Your bid was sent successfully, please know that it might take some time before we receive it!",
+				duration: 10,
+			});
+		else if (paymentStatus === "failed") {
+			messageApi.open({
+				type: "error",
+				content: `Your bid was not sent!`,
+				duration: 10,
+			});
+		}
+		const fetchData = async () => {
+			const result = await axios(
+				process.env.REACT_APP_BACKEND_BASE_URL +
+					`/api/get_art/${props.artName}/`
+			);
+			setArtData(result.data);
+			console.log(result.data);
+		};
+
+		fetchData();
+
+		const intervalId = setInterval(fetchData, 3000);
+		return () => clearInterval(intervalId);
+	}, []);
+
 	return (
 		<div className="w-100">
 			{contextHolder}
@@ -146,9 +205,9 @@ export default function BidInputAndButtons(props) {
 					<div style={{ width: "90%" }}>
 						<div className="center-div">
 							<div>
-								<p className="bold-p">Total bid amount</p>
+								<p className="bold-p">Total bids amount</p>
 								<span>$</span>
-								{null || 0}
+								{artData.total_bids_amount || 0}
 							</div>
 							<Divider
 								type="vertical"
@@ -156,7 +215,7 @@ export default function BidInputAndButtons(props) {
 							/>
 							<div>
 								<p className="bold-p">Number of bidders</p>
-								<p>{null || 0}</p>
+								<p>{artData.number_of_biders || 0}</p>
 							</div>
 							<Divider
 								type="vertical"
@@ -166,8 +225,8 @@ export default function BidInputAndButtons(props) {
 								<p className="bold-p">Bid range</p>
 								<p>
 									<span>$</span>
-									{null || 0} <span>-</span> <span>$</span>
-									{null || 0}
+									{artData.min_bided_amount || 0} <span>-</span> <span>$</span>
+									{artData.max_bided_amount || 0}
 								</p>
 							</div>
 						</div>
