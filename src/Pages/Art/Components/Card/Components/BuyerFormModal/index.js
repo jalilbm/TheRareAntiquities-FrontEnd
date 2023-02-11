@@ -1,0 +1,42 @@
+import { Modal } from "antd";
+import { useState } from "react";
+import InformationForm from "./informationForm";
+
+const BuyerFormModal = (props) => {
+	const [value, setValue] = useState(null);
+
+	const handleOk = (e) => {
+		props.onOk();
+	};
+	const handleCancel = (e) => {
+		props.hideModal();
+	};
+
+	const updateInputValue = (event) => {
+		let { value } = event.target;
+		setValue(value);
+		props.setValue(value);
+	};
+	return (
+		<>
+			<Modal
+				open={true}
+				// title={props.text}
+				// onOk={handleOk}
+				onCancel={handleCancel}
+				footer={null}
+				width={800}
+			>
+				<div>
+					<InformationForm
+						artData={props.artData}
+						randomString={props.randomString}
+						hideModal={props.hideModal}
+						messageApi={props.messageApi}
+					/>
+				</div>
+			</Modal>
+		</>
+	);
+};
+export default BuyerFormModal;

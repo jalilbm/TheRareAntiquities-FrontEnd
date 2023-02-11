@@ -5,10 +5,21 @@ import { Link } from "react-router-dom";
 import { TbLivePhoto } from "react-icons/tb";
 import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { Button, Input, message } from "antd";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
-import { useState } from "react";
 import BidInputAndButtons from "./Components/bidInputAndButtons";
+
+function randomString() {
+	let result = "";
+	let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	let charactersLength = characters.length;
+	for (let i = 0; i < 16; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
+
+// for bank transfer reference
+const randomString_ = randomString();
 
 export default function ArtCard(props) {
 	const artData = props.artData;
@@ -36,7 +47,7 @@ export default function ArtCard(props) {
 								className="w-100"
 								style={{ height: "100%", position: "relative" }}
 							>
-								<Col md={6} className="center-div">
+								<Col lg={6} className="center-div">
 									<div className="center-div">
 										<div
 											className="center-div p-4 image-div"
@@ -54,7 +65,7 @@ export default function ArtCard(props) {
 									</div>
 								</Col>
 								<Col
-									sm={6}
+									lg={6}
 									className="full-col my-4"
 									style={{ position: "relative" }}
 								>
@@ -72,10 +83,23 @@ export default function ArtCard(props) {
 																	style={{ color: "red", fontSize: "1rem" }}
 																/>
 															</div>
-															<div>
-																<p className="px-1 m-0 text-danger">
-																	Live Auctions
+															<div className="center-div">
+																<p
+																	className="px-1 m-0"
+																	style={{ color: "red" }}
+																>
+																	Live Auctions,
 																</p>
+																<p className="pre-text">Ends: </p>
+
+																<CountDown
+																	deadline={artData && artData.deadline}
+																	style={{
+																		fontSize: "1rem",
+																		color: "red",
+																		margin: "0",
+																	}}
+																/>
 															</div>
 														</>
 													) : artData && artData.auction_start_datetime ? (
@@ -172,14 +196,8 @@ export default function ArtCard(props) {
 										<BidInputAndButtons
 											artData={artData}
 											artName={props.artName}
+											randomString={randomString_}
 										/>
-										<div
-											className="my-2"
-											style={{
-												width: "95%",
-												maxWidth: "420px",
-											}}
-										></div>
 									</div>
 								</Col>
 							</Row>

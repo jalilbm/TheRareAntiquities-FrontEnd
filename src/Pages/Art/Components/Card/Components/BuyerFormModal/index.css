@@ -1,0 +1,13 @@
+.ant-form-item > .ant-row > .ant-form-item-label {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: left !important;
+}
+
+.ant-typography-copy {
+	color: gray !important;
+}
+
+.art-buyer-label-name {
+	font-size: 0.8rem;
+}

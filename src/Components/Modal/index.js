@@ -1,6 +1,5 @@
 import { Modal, Input } from "antd";
-import { useRef, useState } from "react";
-import Draggable from "react-draggable";
+import { useState } from "react";
 
 const CustomModal = (props) => {
 	const [value, setValue] = useState(null);
