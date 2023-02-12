@@ -10,6 +10,10 @@
 .ant-collapse-expand-icon {
 	padding-right: 2px !important;
 }
+.details-and-partner {
+	display: flex;
+	justify-content: space-between;
+}
 .carousel-div {
 	width: 450px;
 }
@@ -49,5 +53,13 @@ p {
 @media (max-width: 768px) {
 	.carousel-div {
 		width: 350px;
+	}
+	.details-and-partner {
+		display: block;
+		/* justify-content: space-between; */
+	}
+
+	.partner-logo {
+		margin-top: 20px;
 	}
 }

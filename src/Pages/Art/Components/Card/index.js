@@ -97,10 +97,11 @@ export default function ArtCard(props) {
 											artData && artData.artist_name
 										} - ${artData && artData.name}`}</h2>
 										<div
-											style={{
-												display: "flex",
-												justifyContent: "space-between",
-											}}
+											className="details-and-partner"
+											// style={{
+											// 	display: "flex",
+											// 	justifyContent: "space-between",
+											// }}
 										>
 											<div style={{ display: "flex", flexDirection: "column" }}>
 												<div
@@ -334,7 +335,11 @@ export default function ArtCard(props) {
 													</Collapse>
 												</div>
 											</div>
-											<img src={partnerLogo} style={{ height: "80px" }}></img>
+											<img
+												className="partner-logo"
+												src={partnerLogo}
+												style={{ height: "80px" }}
+											></img>
 										</div>
 									</div>
 									<div
