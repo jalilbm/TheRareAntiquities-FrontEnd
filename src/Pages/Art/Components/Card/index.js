@@ -1,13 +1,13 @@
 import "./index.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { Image } from "antd";
+import { Image, Carousel, Collapse } from "antd";
 import { Link } from "react-router-dom";
 import { TbLivePhoto } from "react-icons/tb";
 import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
 import BidInputAndButtons from "./Components/bidInputAndButtons";
-import ImageGallery from "./Components/ImageGallery";
+// import ImageGallery from "./Components/ImageGallery";
 
 function randomString() {
 	let result = "";
@@ -21,9 +21,13 @@ function randomString() {
 
 // for bank transfer reference
 const randomString_ = randomString();
+const { Panel } = Collapse;
 
 export default function ArtCard(props) {
 	const artData = props.artData;
+	let images = [];
+	if (artData && props.artData.multiple_images.length > 0)
+		images = [artData.image, ...props.artData.multiple_images];
 
 	return (
 		<div className="art-card" style={{ backgroundColor: "white" }}>
@@ -49,27 +53,37 @@ export default function ArtCard(props) {
 								style={{ height: "100%", position: "relative" }}
 							>
 								<Col lg={6} className="center-div">
-									<div className="center-div">
-										<div
-											className="center-div p-4 image-div"
-											style={{
-												backgroundColor: "white",
-												// border: "1px solid black",
-											}}
-										>
-											{/* <ImageGallery images={[artData && artData.image]} /> */}
-											{/* <ImageGallery
-												images={[
-													"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZHViYWl8ZW58MHx8MHx8&w=1000&q=80",
-													"https://img3.goodfon.com/wallpaper/nbig/d/1a/gorod-dubai-oae-solntse-zakat-vecher.jpg",
-												]}
-											/> */}
-											<Image
-												style={{ maxHeight: "400px" }}
-												src={artData && artData.image}
-												// alt="section_img"
-											/>
-										</div>
+									<div className="center-div w-100">
+										{images.length > 1 ? (
+											<Carousel
+												className="carousel-div p-4"
+												style={{ backgroundColor: "white" }}
+											>
+												{images.map((image) => (
+													// <div className="center-div p-4" key={image}>
+													<img
+														style={{ maxHeight: "400px" }}
+														src={image}
+														// alt="section_img"
+													/>
+													// </div>
+												))}
+											</Carousel>
+										) : (
+											<div
+												className="center-div p-4 image-div"
+												style={{
+													backgroundColor: "white",
+													// border: "1px solid black",
+												}}
+											>
+												<Image
+													style={{ maxHeight: "400px" }}
+													src={artData && artData.image}
+													// alt="section_img"
+												/>
+											</div>
+										)}
 									</div>
 								</Col>
 								<Col
@@ -193,6 +207,100 @@ export default function ArtCard(props) {
 													</span>
 													{artData && artData.head}
 												</p>
+											</div>
+											<div className=".left-div">
+												<Collapse ghost>
+													<Panel
+														header={
+															<p
+																style={{
+																	fontWeight: "600",
+																	fontSize: "0.9rem",
+																}}
+															>
+																Learn More
+															</p>
+														}
+														key="1"
+														className="m-0"
+													>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															How do I bid?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															To bid and own a part of the real world piece of
+															art you simply enter the value you wish to own and
+															complete the payment by crypto or card. When the
+															auction ends the art will have a final sale price
+															and you will receive a % of the art proportionate
+															to your bid.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															What do I receive?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															At the end of the auction you receive real world
+															ownership of the art which is sent to you by email
+															as an NFT. An NFT acts as a digital deed and
+															representation of your ownership and it shows you
+															the part of the painting you can call yours. You
+															can then sell your ownership of the art by selling
+															your NFT on any NFT Marketplace.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															What else do I get?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															Once the auction is complete you will receive a
+															fraction from the art which is proportionate to
+															your bid. Using our fraction locator you will be
+															able to identify which part of the art you now
+															own. Your NFT fraction is authenticated and we
+															will provide the ability for you to have your
+															fraction printed and delivered so you may show off
+															the part of the art you own in your very own home.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															How do I own the entire painting?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															To own the entire painting and have it delivered
+															to your preferred location you may use the Buy Now
+															option. If there is no Buy Now option then once
+															the auction is complete you have the ability to
+															buy other fractions from other owners of the same
+															piece of art on the NFT Marketplace. Once you own
+															51% or more of a single piece of art you can force
+															buy out the remaining fraction owners giving you
+															100% ownership. At which point you can collect or
+															arrange delivery of the physical piece of art.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															Are there other benefits too?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															All paintings curated by The Rare Antiquities are
+															3D scanned and are displayed in our museums and
+															galleries in the Metaverse, 'The Rare City'.
+															Simply by having shared ownership of a painting on
+															exhibition provides you with profit sharing for
+															all entry fees paid to enter the museum or gallery
+															where your art is on display. You can even display
+															your part of the art in your own private space in
+															the Metaverse too!
+														</p>
+													</Panel>
+												</Collapse>
 											</div>
 										</div>
 									</div>

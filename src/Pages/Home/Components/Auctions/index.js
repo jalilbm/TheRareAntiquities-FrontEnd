@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 let { Meta } = Card;
 
 export default function AuctionsHome(props) {
+	console.log(props.collectionsData);
 	return (
 		<div>
 			<div className="center-div" id="home-auctions-section">
 				<SectionHeader
-					title={props.sectionTitle || "Auctions"}
-					head={props.sectionHead || "Upcoming Auctions"}
+					title={props.sectionTitle || "Shared Auctions"}
+					head={props.sectionHead || "Upcoming Shared Auctions"}
 					description=""
 					textAlign="center"
 					width="400px"
