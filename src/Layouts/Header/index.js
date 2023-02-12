@@ -62,7 +62,7 @@ export default function MainHeader() {
 								<Nav className="nav_btn" id="right_side_nav">
 									<div className="nav-link-div">
 										<Nav.Link as={Link} to="/auctions">
-											Auctions
+											Shared Auctions
 										</Nav.Link>
 									</div>
 									<div className="nav-link-div">
