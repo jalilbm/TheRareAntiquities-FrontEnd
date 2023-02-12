@@ -84,7 +84,10 @@ export default function ArtCard(props) {
 											} - ${artData && artData.name}`}</h2>
 											<div style={{ display: "flex", justifyContent: "left" }}>
 												<div className="center-div py-2">
+													{/* // live
 													{artData && artData.live ? (
+													// staging */}
+													{artData && !artData.live ? (
 														<>
 															<div className="center-div">
 																<TbLivePhoto

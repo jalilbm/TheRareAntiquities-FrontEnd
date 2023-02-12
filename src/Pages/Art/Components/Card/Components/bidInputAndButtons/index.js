@@ -196,7 +196,12 @@ export default function BidInputAndButtons(props) {
 				process.env.REACT_APP_BACKEND_BASE_URL +
 					`/api/get_art/${props.artName}/`
 			);
-			setArtData(result.data);
+			// live
+			// setArtData(result.data);
+			// staging
+			let tmp = result.data;
+			tmp.live = true;
+			setArtData(tmp);
 			console.log(result.data);
 		};
 
@@ -280,7 +285,7 @@ export default function BidInputAndButtons(props) {
 					</div>
 				)}
 			{artData && artData.live && !artData.bought_at_one_price && (
-				// {artData && (
+				// {artData && !artData.bought_at_one_price && (
 				<div className="center-div">
 					<div style={{ width: "90%" }}>
 						<>
@@ -371,7 +376,6 @@ export default function BidInputAndButtons(props) {
 					</div>
 				</Input.Group>
 			</div>
-
 			{showEmailModel && (
 				<CardCryptoModal
 					text={"Please enter your email bellow:"}
