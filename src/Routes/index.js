@@ -3,6 +3,8 @@ import Home from "../Pages/Home";
 import Art from "../Pages/Art";
 import Auctions from "../Pages/Auctions";
 import Auction from "../Pages/Auction";
+import TermsAndConditions from "../Pages/TermsAndConditions";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import { useEffect } from "react";
 
 export default function Main() {
@@ -30,6 +32,12 @@ export default function Main() {
 			<Route exact path="/art/:artName" element={<Art />} />
 			<Route exact path="/auctions" element={<Auctions />} />
 			<Route exact path="/auction/:auctionName" element={<Auction />} />
+			<Route
+				exact
+				path="/terms-and-conditions"
+				element={<TermsAndConditions />}
+			/>
+			<Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
 		</Routes>
 	);
 }

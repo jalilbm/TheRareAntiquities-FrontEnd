@@ -73,7 +73,7 @@ const Footer = () => {
 					<Link className="link-no-text-decoration" to="">
 						Terms Of Service
 					</Link>
-					<Link className="link-no-text-decoration" to="">
+					<Link className="link-no-text-decoration" to="/privacy-policy">
 						Privacy Policy
 					</Link>
 					<Link className="link-no-text-decoration" to="">
@@ -81,6 +81,9 @@ const Footer = () => {
 					</Link>
 					<Link className="link-no-text-decoration" to="">
 						How it Works
+					</Link>
+					<Link className="link-no-text-decoration" to="/terms-and-conditions">
+						Terms and conditions
 					</Link>
 				</div>
 			</div>

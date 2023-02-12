@@ -18,7 +18,7 @@ export default function AuctionsHome(props) {
 					head={props.sectionHead || "Upcoming Shared Auctions"}
 					description=""
 					textAlign="center"
-					width="400px"
+					width="500px"
 				/>
 			</div>
 			<div className="center-div">

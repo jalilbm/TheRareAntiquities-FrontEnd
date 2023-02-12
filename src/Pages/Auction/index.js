@@ -8,6 +8,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import ArtCard from "../../Components/ArtCard";
 import AuctionsHome from "../Home/Components/Auctions";
+import partnerLogo from "../../Assets/Logos/partnerLogo.png";
 
 export default function Home() {
 	const { auctionName } = useParams();
@@ -70,10 +71,17 @@ export default function Home() {
 							color: "purple",
 						}}
 					>
-						<h5>{parseDate(auctionData.auction_start_datetime)}</h5> -{" "}
-						<h5>{parseDate(auctionData.deadline)}</h5>
+						<h5>{parseDate(auctionData.auction_start_datetime)} - </h5>{" "}
+						<h5> {parseDate(auctionData.deadline)}</h5>
 					</div>
-					<h1>{auctionData.name}</h1>
+					<div className="left-div">
+						<h1>{auctionData.name}</h1>{" "}
+						<img
+							className="px-5"
+							src={partnerLogo}
+							style={{ height: "60px" }}
+						></img>
+					</div>
 					<div
 						className="my-2"
 						style={{
