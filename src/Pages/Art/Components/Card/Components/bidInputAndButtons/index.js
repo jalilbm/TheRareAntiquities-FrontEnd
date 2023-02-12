@@ -209,7 +209,7 @@ export default function BidInputAndButtons(props) {
 	return (
 		<div className="w-100">
 			{contextHolder}
-			<div className="center-div">
+			{/* <div className="center-div">
 				<div className="left-div" style={{ width: "90%" }}>
 					<div className="left-div"></div>
 					<Collapse ghost>
@@ -288,7 +288,7 @@ export default function BidInputAndButtons(props) {
 						</Panel>
 					</Collapse>
 				</div>
-			</div>
+			</div> */}
 			{artData &&
 				(artData.live ||
 					artData.bought_at_one_price ||

@@ -208,6 +208,100 @@ export default function ArtCard(props) {
 													{artData && artData.head}
 												</p>
 											</div>
+											<div className=".left-div">
+												<Collapse ghost>
+													<Panel
+														header={
+															<p
+																style={{
+																	fontWeight: "600",
+																	fontSize: "0.9rem",
+																}}
+															>
+																Learn More
+															</p>
+														}
+														key="1"
+														className="m-0"
+													>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															How do I bid?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															To bid and own a part of the real world piece of
+															art you simply enter the value you wish to own and
+															complete the payment by crypto or card. When the
+															auction ends the art will have a final sale price
+															and you will receive a % of the art proportionate
+															to your bid.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															What do I receive?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															At the end of the auction you receive real world
+															ownership of the art which is sent to you by email
+															as an NFT. An NFT acts as a digital deed and
+															representation of your ownership and it shows you
+															the part of the painting you can call yours. You
+															can then sell your ownership of the art by selling
+															your NFT on any NFT Marketplace.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															What else do I get?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															Once the auction is complete you will receive a
+															fraction from the art which is proportionate to
+															your bid. Using our fraction locator you will be
+															able to identify which part of the art you now
+															own. Your NFT fraction is authenticated and we
+															will provide the ability for you to have your
+															fraction printed and delivered so you may show off
+															the part of the art you own in your very own home.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															How do I own the entire painting?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															To own the entire painting and have it delivered
+															to your preferred location you may use the Buy Now
+															option. If there is no Buy Now option then once
+															the auction is complete you have the ability to
+															buy other fractions from other owners of the same
+															piece of art on the NFT Marketplace. Once you own
+															51% or more of a single piece of art you can force
+															buy out the remaining fraction owners giving you
+															100% ownership. At which point you can collect or
+															arrange delivery of the physical piece of art.
+														</p>
+														<p
+															style={{ fontWeight: "600", fontSize: "0.9rem" }}
+														>
+															Are there other benefits too?
+														</p>
+														<p style={{ fontSize: "0.9rem" }}>
+															All paintings curated by The Rare Antiquities are
+															3D scanned and are displayed in our museums and
+															galleries in the Metaverse, 'The Rare City'.
+															Simply by having shared ownership of a painting on
+															exhibition provides you with profit sharing for
+															all entry fees paid to enter the museum or gallery
+															where your art is on display. You can even display
+															your part of the art in your own private space in
+															the Metaverse too!
+														</p>
+													</Panel>
+												</Collapse>
+											</div>
 										</div>
 									</div>
 									<div
