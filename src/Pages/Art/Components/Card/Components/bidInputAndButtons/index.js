@@ -97,7 +97,7 @@ export default function BidInputAndButtons(props) {
 			});
 	};
 
-	function openPopUp() {
+	useEffect(() => {
 		if (
 			(bidMethod === "card" || bidMethod === "crypto") &&
 			!regexp.test(bidData.bidAmount)
@@ -108,6 +108,7 @@ export default function BidInputAndButtons(props) {
 				duration: 5,
 			});
 		} else if (
+			artData &&
 			artData.min_bid_allowed &&
 			bidData.bidAmount < Number(artData.min_bid_allowed)
 		) {
@@ -117,6 +118,7 @@ export default function BidInputAndButtons(props) {
 				duration: 5,
 			});
 		} else if (
+			artData &&
 			artData.max_bid_allowed &&
 			bidData.bidAmount > Number(artData.max_bid_allowed)
 		) {
@@ -127,10 +129,10 @@ export default function BidInputAndButtons(props) {
 			});
 		} else if (bidMethod === "card" || bidMethod === "crypto") {
 			setShowEmailModel(true);
-		} else {
+		} else if (bidMethod === "bank transfer") {
 			setShowBankTransferModel(true);
 		}
-	}
+	}, [bidMethod]);
 
 	function getPaymentCheckoutUrl(bidMethod) {
 		let url = "";
@@ -140,9 +142,7 @@ export default function BidInputAndButtons(props) {
 		} else if (bidMethod === "crypto") {
 			url =
 				process.env.REACT_APP_BACKEND_BASE_URL + "/api/coinbase/create-charge/";
-		} else {
 		}
-
 		axios.post(url, bidData).then((response) => {
 			if (response.status === 200) {
 				if (bidMethod === "card")
@@ -229,9 +229,9 @@ export default function BidInputAndButtons(props) {
 								<Col md={4}>
 									<div>
 										<div>
-											<p className="bold-p">Total bids amount</p>
+											<p className="bold-p">Total Painting Value</p>
 											<span>$</span>
-											{artData.total_bids_amount || 0}
+											{Number(artData.total_bids_amount).toLocaleString() || 0}
 											<br />
 											{artData.bought_at_one_price ||
 											artData.total_bids_amount >= artData.reserve_price ? (
@@ -255,7 +255,7 @@ export default function BidInputAndButtons(props) {
 								<Col md={4}>
 									<div>
 										<div>
-											<p className="bold-p">Number of bidders</p>
+											<p className="bold-p">Number of owners</p>
 											<p>{artData.number_of_biders || 0}</p>
 										</div>
 									</div>
@@ -263,12 +263,14 @@ export default function BidInputAndButtons(props) {
 								<Col md={4}>
 									<div>
 										<div>
-											<p className="bold-p">Bid range</p>
+											<p className="bold-p">Ownership range</p>
 											<p>
 												<span>$</span>
-												{artData.min_bided_amount || 0} <span>-</span>{" "}
-												<span>$</span>
-												{artData.max_bided_amount || 0}
+												{Number(
+													artData.min_bided_amount || 0
+												).toLocaleString()}{" "}
+												<span>-</span> <span>$</span>
+												{Number(artData.max_bided_amount || 0).toLocaleString()}
 											</p>
 										</div>
 									</div>
@@ -305,18 +307,17 @@ export default function BidInputAndButtons(props) {
 										name="card"
 										onClick={() => {
 											changeMethod("card");
-											openPopUp();
 										}}
 									>
 										Bid by card
 									</Button>
 									<Button
 										className="auction-bid-button"
+										id="bid-by-crypto"
 										type="primary"
 										name="crypto"
 										onClick={() => {
 											changeMethod("crypto");
-											openPopUp();
 										}}
 									>
 										Bid by crypto
@@ -330,8 +331,7 @@ export default function BidInputAndButtons(props) {
 									name="card"
 									style={{ border: "none", borderRadius: "0" }}
 									onClick={() => {
-										changeMethod("back transfer");
-										openPopUp();
+										changeMethod("bank transfer");
 									}}
 								>
 									Buy It Now
@@ -375,7 +375,10 @@ export default function BidInputAndButtons(props) {
 			{showEmailModel && (
 				<CardCryptoModal
 					text={"Please enter your email bellow:"}
-					hideModal={() => setShowEmailModel(false)}
+					hideModal={() => {
+						setBidMethod(null);
+						setShowEmailModel(false);
+					}}
 					setValue={(email) => {
 						setBidData({ ...bidData, bidEmail: email });
 					}}
@@ -391,6 +394,8 @@ export default function BidInputAndButtons(props) {
 					artData={artData}
 					randomString={props.randomString}
 					hideModal={() => setShowBankTransferModel(false)}
+					setBidData={(values) => setBidData(values)}
+					bidData={bidData}
 					setValue={(email) => {
 						setBidData({ ...bidData, bidEmail: email });
 					}}

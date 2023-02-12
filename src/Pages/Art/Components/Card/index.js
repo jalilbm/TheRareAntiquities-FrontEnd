@@ -7,6 +7,7 @@ import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
 import BidInputAndButtons from "./Components/bidInputAndButtons";
+import ImageGallery from "./Components/ImageGallery";
 
 function randomString() {
 	let result = "";
@@ -56,6 +57,13 @@ export default function ArtCard(props) {
 												// border: "1px solid black",
 											}}
 										>
+											{/* <ImageGallery images={[artData && artData.image]} /> */}
+											{/* <ImageGallery
+												images={[
+													"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZHViYWl8ZW58MHx8MHx8&w=1000&q=80",
+													"https://img3.goodfon.com/wallpaper/nbig/d/1a/gorod-dubai-oae-solntse-zakat-vecher.jpg",
+												]}
+											/> */}
 											<Image
 												style={{ maxHeight: "400px" }}
 												src={artData && artData.image}
@@ -94,6 +102,7 @@ export default function ArtCard(props) {
 
 																<CountDown
 																	deadline={artData && artData.deadline}
+																	artData={artData && artData}
 																	style={{
 																		fontSize: "1rem",
 																		color: "red",
@@ -123,6 +132,12 @@ export default function ArtCard(props) {
 																	<CountDown
 																		deadline={
 																			artData && artData.auction_start_datetime
+																		}
+																		setLive={() =>
+																			props.setArtData({
+																				...artData,
+																				live: true,
+																			})
 																		}
 																		style={{
 																			fontSize: "1rem",

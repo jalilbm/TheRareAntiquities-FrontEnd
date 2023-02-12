@@ -33,6 +33,8 @@ const BuyerFormModal = (props) => {
 						randomString={props.randomString}
 						hideModal={props.hideModal}
 						messageApi={props.messageApi}
+						setBidData={(values) => props.setBidData(values)}
+						bidData={props.bidData}
 					/>
 				</div>
 			</Modal>

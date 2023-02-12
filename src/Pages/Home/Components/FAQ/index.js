@@ -39,7 +39,7 @@ const FAQ = () => (
 					Fractionalization is the technology that allows these highly valued
 					items to be accessible by many within minutes.
 					<br /> Any number of fractions or fraction sizes can be bought or sold
-					using our native token $RAT on our NFT Marketplace.
+					on our NFT Marketplace.
 					<br /> Each fraction is of a unique shape and size and is entirely
 					configurable before fractionalization. Once fractionalized, all
 					fractions are distributed as individual NFTs to the fraction owners.

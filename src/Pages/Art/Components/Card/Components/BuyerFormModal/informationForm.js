@@ -22,6 +22,17 @@ const { Paragraph } = Typography;
 
 export default function InformationForm(props) {
 	const [step, setStep] = useState(1);
+
+	function handlePayByCrypto() {
+		const url =
+			process.env.REACT_APP_BACKEND_BASE_URL + "/api/coinbase/create-charge/";
+		axios.post(url, props.bidData).then((response) => {
+			if (response.status === 200) {
+				window.location.replace(response.data.data.hosted_url);
+			}
+		});
+	}
+
 	const onFinish = (values) => {
 		if (step === 1) {
 			console.log(values);
@@ -32,6 +43,11 @@ export default function InformationForm(props) {
 				email: values.user.email,
 				reference: props.randomString,
 			};
+			props.setBidData({
+				...props.bidData,
+				bidEmail: payload.email,
+				bidAmount: props.artData.buy_now_price,
+			});
 			axios
 				.post(
 					process.env.REACT_APP_BACKEND_BASE_URL +
@@ -292,6 +308,20 @@ export default function InformationForm(props) {
 								when submitting the wire transfer.
 							</p>
 						</div>
+						<div className="my-3" style={{ fontSize: "0.7rem" }}>
+							<p
+								className="m-0"
+								style={{ fontWeight: "bold", fontSize: "0.8rem" }}
+							>
+								Additional information
+							</p>
+							<hr className="my-0"></hr>
+							<p className="my-0" style={{ fontSize: "0.8rem" }}>
+								The name on the bank account you are depositing from must match
+								the name entered for verification on the Sama-L-Ain account you
+								are depositing into.
+							</p>
+						</div>
 					</div>
 				</div>
 			)}
@@ -309,9 +339,16 @@ export default function InformationForm(props) {
 						width: "95%",
 					}}
 				>
-					<Button type="primary" htmlType="submit" className="">
-						{step === 1 ? "Next" : "Close"}
-					</Button>
+					<div className="center-div">
+						{step === 2 && (
+							<Button className="mx-2" onClick={handlePayByCrypto}>
+								Pay By Crypto
+							</Button>
+						)}
+						<Button type="primary" htmlType="submit">
+							{step === 1 ? "Next" : "Close"}
+						</Button>
+					</div>
 				</Form.Item>
 			</div>
 		</Form>
