@@ -98,37 +98,39 @@ export default function BidInputAndButtons(props) {
 	};
 
 	useEffect(() => {
-		if (
-			(bidMethod === "card" || bidMethod === "crypto") &&
-			!regexp.test(bidData.bidAmount)
-		) {
-			messageApi.open({
-				type: "error",
-				content: "Please enter a valid amount to complete your bid!",
-				duration: 5,
-			});
-		} else if (
-			artData &&
-			artData.min_bid_allowed &&
-			bidData.bidAmount < Number(artData.min_bid_allowed)
-		) {
-			messageApi.open({
-				type: "error",
-				content: `The minimum bid allowed is ${artData.min_bid_allowed}`,
-				duration: 5,
-			});
-		} else if (
-			artData &&
-			artData.max_bid_allowed &&
-			bidData.bidAmount > Number(artData.max_bid_allowed)
-		) {
-			messageApi.open({
-				type: "error",
-				content: `The maximum bid allowed is ${artData.max_bid_allowed}`,
-				duration: 5,
-			});
-		} else if (bidMethod === "card" || bidMethod === "crypto") {
-			setShowEmailModel(true);
+		if (bidMethod === "card" || bidMethod === "crypto") {
+			if (!regexp.test(bidData.bidAmount)) {
+				messageApi.open({
+					type: "error",
+					content: "Please enter a valid amount to complete your bid!",
+					duration: 5,
+				});
+				setBidMethod(null);
+			} else if (
+				artData &&
+				artData.min_bid_allowed &&
+				bidData.bidAmount < Number(artData.min_bid_allowed)
+			) {
+				messageApi.open({
+					type: "error",
+					content: `The minimum bid allowed is ${artData.min_bid_allowed}`,
+					duration: 5,
+				});
+				setBidMethod(null);
+			} else if (
+				artData &&
+				artData.max_bid_allowed &&
+				bidData.bidAmount > Number(artData.max_bid_allowed)
+			) {
+				messageApi.open({
+					type: "error",
+					content: `The maximum bid allowed is ${artData.max_bid_allowed}`,
+					duration: 5,
+				});
+				setBidMethod(null);
+			} else {
+				setShowEmailModel(true);
+			}
 		} else if (bidMethod === "bank transfer") {
 			setShowBankTransferModel(true);
 		}
@@ -485,7 +487,10 @@ export default function BidInputAndButtons(props) {
 					text={"Please enter your information bellow:"}
 					artData={artData}
 					randomString={props.randomString}
-					hideModal={() => setShowBankTransferModel(false)}
+					hideModal={() => {
+						setShowBankTransferModel(false);
+						setBidMethod(null);
+					}}
 					setBidData={(values) => setBidData(values)}
 					bidData={bidData}
 					setValue={(email) => {
