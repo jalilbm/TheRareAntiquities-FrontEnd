@@ -415,7 +415,7 @@ export default function InformationForm(props) {
 				<Form.Item
 					wrapperCol={{
 						...layout.wrapperCol,
-						offset: 8,
+						offset: 4,
 					}}
 					style={{
 						display: "flex",
@@ -424,15 +424,17 @@ export default function InformationForm(props) {
 						width: "95%",
 					}}
 				>
-					<div className="center-div">
-						{step === 2 && (
-							<Button className="mx-2" onClick={handlePayByCrypto}>
-								Pay By Crypto
+					<div style={{ justifySelf: "flex-end" }}>
+						<div className="center-div">
+							{step === 2 && (
+								<Button className="mx-2" onClick={handlePayByCrypto}>
+									Pay By Crypto
+								</Button>
+							)}
+							<Button type="primary" htmlType="submit">
+								{step === 1 ? "Next" : "Close"}
 							</Button>
-						)}
-						<Button type="primary" htmlType="submit">
-							{step === 1 ? "Next" : "Close"}
-						</Button>
+						</div>
 					</div>
 				</Form.Item>
 			</div>
