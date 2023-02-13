@@ -7,7 +7,8 @@ import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
 import BidInputAndButtons from "./Components/bidInputAndButtons";
-import partnerLogo from "../../../../Assets/Logos/partnerLogo.png";
+import partnerLogo1 from "../../../../Assets/Logos/partnerLogo1.png";
+import partnerLogo2 from "../../../../Assets/Logos/partnerLogo2.png";
 // import ImageGallery from "./Components/ImageGallery";
 
 const { Panel } = Collapse;
@@ -84,6 +85,72 @@ export default function ArtCard(props) {
 										<h2 className="my-0">{`${
 											artData && artData.artist_name
 										} - ${artData && artData.name}`}</h2>
+										<div style={{ display: "flex", justifyContent: "left" }}>
+											<div className="center-div py-2">
+												{artData && artData.live ? (
+													<>
+														<div className="center-div">
+															<TbLivePhoto
+																style={{ color: "red", fontSize: "1rem" }}
+															/>
+														</div>
+														<div className="center-div">
+															<p className="px-1 m-0" style={{ color: "red" }}>
+																Live Auctions,
+															</p>
+															<p className="pre-text">Ends: </p>
+
+															<CountDown
+																deadline={artData && artData.deadline}
+																artData={artData && artData}
+																style={{
+																	fontSize: "1rem",
+																	color: "red",
+																	margin: "0",
+																}}
+															/>
+														</div>
+													</>
+												) : artData && artData.auction_start_datetime ? (
+													<>
+														<div className="center-div">
+															<AiOutlineFieldTime
+																style={{
+																	color: "red",
+																	fontSize: "1rem",
+																}}
+															/>
+														</div>
+														<div className="px-1 m-0">
+															<div className="center-div">
+																<p
+																	className="m-0 pre-text"
+																	style={{ color: "#FF0200" }}
+																>
+																	Starts in:{" "}
+																</p>
+																<CountDown
+																	deadline={
+																		artData && artData.auction_start_datetime
+																	}
+																	setLive={() =>
+																		props.setArtData({
+																			...artData,
+																			live: true,
+																		})
+																	}
+																	style={{
+																		fontSize: "1rem",
+																		color: "red",
+																		margin: "0",
+																	}}
+																/>
+															</div>
+														</div>
+													</>
+												) : null}
+											</div>
+										</div>
 										<div
 											className="details-and-partner"
 											// style={{
@@ -92,78 +159,6 @@ export default function ArtCard(props) {
 											// }}
 										>
 											<div style={{ display: "flex", flexDirection: "column" }}>
-												<div
-													style={{ display: "flex", justifyContent: "left" }}
-												>
-													<div className="center-div py-2">
-														{artData && artData.live ? (
-															<>
-																<div className="center-div">
-																	<TbLivePhoto
-																		style={{ color: "red", fontSize: "1rem" }}
-																	/>
-																</div>
-																<div className="center-div">
-																	<p
-																		className="px-1 m-0"
-																		style={{ color: "red" }}
-																	>
-																		Live Auctions,
-																	</p>
-																	<p className="pre-text">Ends: </p>
-
-																	<CountDown
-																		deadline={artData && artData.deadline}
-																		artData={artData && artData}
-																		style={{
-																			fontSize: "1rem",
-																			color: "red",
-																			margin: "0",
-																		}}
-																	/>
-																</div>
-															</>
-														) : artData && artData.auction_start_datetime ? (
-															<>
-																<div className="center-div">
-																	<AiOutlineFieldTime
-																		style={{
-																			color: "red",
-																			fontSize: "1rem",
-																		}}
-																	/>
-																</div>
-																<div className="px-1 m-0">
-																	<div className="center-div">
-																		<p
-																			className="m-0 pre-text"
-																			style={{ color: "#FF0200" }}
-																		>
-																			Starts in:{" "}
-																		</p>
-																		<CountDown
-																			deadline={
-																				artData &&
-																				artData.auction_start_datetime
-																			}
-																			setLive={() =>
-																				props.setArtData({
-																					...artData,
-																					live: true,
-																				})
-																			}
-																			style={{
-																				fontSize: "1rem",
-																				color: "red",
-																				margin: "0",
-																			}}
-																		/>
-																	</div>
-																</div>
-															</>
-														) : null}
-													</div>
-												</div>
 												<div className=".left-div">
 													<p className="pre-text">
 														<span style={{ fontWeight: "600" }}>Lot: </span>
@@ -323,11 +318,31 @@ export default function ArtCard(props) {
 													</Collapse>
 												</div>
 											</div>
-											<img
-												className="partner-logo"
-												src={partnerLogo}
-												style={{ height: "80px" }}
-											></img>
+
+											<div className="center-div mt-3">
+												<div
+													style={{ display: "flex", flexDirection: "column" }}
+												>
+													<p
+														className="center-div m-1"
+														style={{ fontWeight: "600" }}
+													>
+														Auction in partnership with
+													</p>
+													<div className="center-div">
+														<img
+															className="partner-logo m-1"
+															src={partnerLogo1}
+															style={{ height: "60px" }}
+														></img>
+														<img
+															className="partner-logo m-1"
+															src={partnerLogo2}
+															style={{ height: "80px" }}
+														></img>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div

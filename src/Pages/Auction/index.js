@@ -8,7 +8,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import ArtCard from "../../Components/ArtCard";
 import AuctionsHome from "../Home/Components/Auctions";
-import partnerLogo from "../../Assets/Logos/partnerLogo.png";
+import partnerLogo1 from "../../Assets/Logos/partnerLogo1.png";
+import partnerLogo2 from "../../Assets/Logos/partnerLogo2.png";
 
 export default function Home() {
 	const { auctionName } = useParams();
@@ -74,14 +75,23 @@ export default function Home() {
 						<h5>{parseDate(auctionData.auction_start_datetime)} - </h5>{" "}
 						<h5> {parseDate(auctionData.deadline)}</h5>
 					</div>
-					<div className="left-div">
-						<h1>{auctionData.name}</h1>{" "}
-						<img
-							className="px-5"
-							src={partnerLogo}
-							style={{ height: "60px" }}
-						></img>
-					</div>
+					{auctionData.name === "Royal Picasso" && (
+						<div className="left-div">
+							<h1>{auctionData.name}</h1>{" "}
+							<div className="px-5">
+								<img
+									className="px-1"
+									src={partnerLogo1}
+									style={{ height: "60px" }}
+								></img>
+								<img
+									className="px-1"
+									src={partnerLogo2}
+									style={{ height: "80px" }}
+								></img>
+							</div>
+						</div>
+					)}
 					<div
 						className="my-2"
 						style={{
