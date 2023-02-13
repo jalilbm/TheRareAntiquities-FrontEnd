@@ -305,11 +305,11 @@ export default function BidInputAndButtons(props) {
 								width: "90%",
 							}}
 						>
-							<Row className="w-100">
-								<Col md={4}>
+							<Row className="w-100 m-0">
+								<Col md={4} className="px-0 py-3">
 									<div>
 										<div>
-											<p className="bold-p">Total Painting Value</p>
+											<p style={{ fontWeight: "600" }}>Total Bid</p>
 											<span>$</span>
 											{Number(artData.total_bids_amount).toLocaleString() || 0}
 											<br />
@@ -329,30 +329,53 @@ export default function BidInputAndButtons(props) {
 													Reserve not met
 												</span>
 											)}
+											<div>
+												<p className="bold-p" style={{ fontWeight: "600" }}>
+													Number of owners
+												</p>
+												<p>{artData.number_of_biders || 0}</p>
+											</div>
+											<div>
+												<p className="bold-p" style={{ fontWeight: "600" }}>
+													Ownership range
+												</p>
+												<p>
+													<span>$</span>
+													{Number(
+														artData.min_bided_amount || 0
+													).toLocaleString()}{" "}
+													<span>-</span> <span>$</span>
+													{Number(
+														artData.max_bided_amount || 0
+													).toLocaleString()}
+												</p>
+											</div>
 										</div>
 									</div>
 								</Col>
-								<Col md={4}>
+								<Col md={4} className="px-0 py-3">
 									<div>
-										<div>
-											<p className="bold-p">Number of owners</p>
-											<p>{artData.number_of_biders || 0}</p>
-										</div>
+										<p className="bold-p" style={{ fontWeight: "600" }}>
+											Price
+										</p>
+										<p>
+											${Number(artData.buy_now_price || 0).toLocaleString()}
+										</p>
 									</div>
 								</Col>
-								<Col md={4}>
-									<div>
-										<div>
-											<p className="bold-p">Ownership range</p>
-											<p>
-												<span>$</span>
-												{Number(
-													artData.min_bided_amount || 0
-												).toLocaleString()}{" "}
-												<span>-</span> <span>$</span>
-												{Number(artData.max_bided_amount || 0).toLocaleString()}
-											</p>
-										</div>
+								<Col md={4} className="px-0 py-3">
+									<div className="w-100">
+										<Button
+											className="auction-bid-button w-100"
+											type="primary"
+											name="card"
+											style={{ border: "none", borderRadius: "0" }}
+											onClick={() => {
+												changeMethod("bank transfer");
+											}}
+										>
+											Buy It Now
+										</Button>
 									</div>
 								</Col>
 							</Row>
@@ -404,19 +427,6 @@ export default function BidInputAndButtons(props) {
 											Bid by crypto
 										</Button>
 									</div>
-								</div>
-								<div className=" w-100 pb-3">
-									<Button
-										className="auction-bid-button w-100"
-										type="primary"
-										name="card"
-										style={{ border: "none", borderRadius: "0" }}
-										onClick={() => {
-											changeMethod("bank transfer");
-										}}
-									>
-										Buy It Now
-									</Button>
 								</div>
 							</>
 						</div>

@@ -1,6 +1,7 @@
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Form, Input, Typography, Select } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import countriesJson from "../../../../../../data/countries.json";
 import "./index.css";
 const layout = {
 	labelCol: {
@@ -22,6 +23,11 @@ const { Paragraph } = Typography;
 
 export default function InformationForm(props) {
 	const [step, setStep] = useState(1);
+	const [countries, setCountries] = useState([]);
+
+	useEffect(() => {
+		setCountries(countriesJson);
+	}, []);
 
 	function handlePayByCrypto() {
 		const url =
@@ -38,8 +44,8 @@ export default function InformationForm(props) {
 			console.log(values);
 			let payload = {
 				artName: props.artData.name,
-				fullName: values.user.name,
-				address: `${values.user.address}, ${values.user.address_2}`,
+				fullName: `${values.user.name} | ${values.user.name_2}`,
+				address: `${values.user.address} | ${values.user.address_2} | ${values.user.state} | ${values.user.zip} | ${values.user.country} | ${values.user.phone}`,
 				email: values.user.email,
 				reference: props.randomString,
 			};
@@ -89,10 +95,26 @@ export default function InformationForm(props) {
 		>
 			{step === 1 ? (
 				<div>
-					<h5>Please enter your information bellow:</h5>
+					<h5 className="mb-4">
+						{props.artData.name} - $
+						{Number(props.artData.buy_now_price).toLocaleString()}
+					</h5>
+					<h6>Please fill the form bellow:</h6>
+
 					<Form.Item
 						name={["user", "name"]}
-						label="Full name"
+						label="First name"
+						rules={[
+							{
+								required: true,
+							},
+						]}
+					>
+						<Input />
+					</Form.Item>
+					<Form.Item
+						name={["user", "name_2"]}
+						label="Last name"
 						rules={[
 							{
 								required: true,
@@ -113,9 +135,40 @@ export default function InformationForm(props) {
 					>
 						<Input />
 					</Form.Item>
+					<p style={{ fontWeight: "600", fontSize: "0.9rem" }}>
+						Shipping address:
+					</p>
 					<Form.Item
 						name={["user", "address"]}
-						label="Address line 1"
+						label="Street address"
+						rules={[
+							{
+								required: true,
+							},
+						]}
+					>
+						<Input />
+					</Form.Item>
+					<Form.Item name={["user", "address_2"]} label="Street address 2">
+						<Input />
+					</Form.Item>
+					<Form.Item
+						name={["user", "city"]}
+						label="City"
+						rules={[
+							{
+								required: true,
+							},
+						]}
+					>
+						<Input />
+					</Form.Item>
+					<Form.Item name={["user", "state"]} label="State/Province">
+						<Input />
+					</Form.Item>
+					<Form.Item
+						name={["user", "zip"]}
+						label="Zip code"
 						rules={[
 							{
 								required: true,
@@ -125,15 +178,47 @@ export default function InformationForm(props) {
 						<Input />
 					</Form.Item>
 					<Form.Item
-						name={["user", "address_2"]}
-						label="Address line 2"
+						label="country"
+						name={["user", "country"]}
 						rules={[
 							{
 								required: true,
 							},
 						]}
 					>
+						<Select defaultValue="Select a country">
+							{countries.map((country) => (
+								<Select.Option key={country.name} value={country.name}>
+									{country.name}
+								</Select.Option>
+							))}
+						</Select>
+					</Form.Item>
+					<Form.Item
+						name={["user", "phone"]}
+						label="phone"
+						rules={[
+							{ required: true, message: "Please input your phone number!" },
+						]}
+					>
 						<Input />
+						{/* <Input
+							addonBefore={
+								<Form.Item name="prefix" noStyle>
+									<Select style={{ width: 90 }}>
+										{countries.map((country) => (
+											<Select.Option
+												key={country.dial_code}
+												value={country.dial_code}
+											>
+												{country.dial_code}
+											</Select.Option>
+										))}
+									</Select>
+								</Form.Item>
+							}
+							style={{ width: "100%" }}
+						/> */}
 					</Form.Item>
 				</div>
 			) : (
