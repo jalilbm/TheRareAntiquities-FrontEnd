@@ -10,18 +10,6 @@ import BidInputAndButtons from "./Components/bidInputAndButtons";
 import partnerLogo from "../../../../Assets/Logos/partnerLogo.png";
 // import ImageGallery from "./Components/ImageGallery";
 
-function randomString() {
-	let result = "";
-	let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	let charactersLength = characters.length;
-	for (let i = 0; i < 16; i++) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
-}
-
-// for bank transfer reference
-const randomString_ = randomString();
 const { Panel } = Collapse;
 
 export default function ArtCard(props) {
@@ -357,7 +345,6 @@ export default function ArtCard(props) {
 										<BidInputAndButtons
 											artData={artData}
 											artName={props.artName}
-											randomString={randomString_}
 										/>
 									</div>
 								</Col>

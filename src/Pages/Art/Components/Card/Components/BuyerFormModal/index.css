@@ -11,3 +11,7 @@
 .art-buyer-label-name {
 	font-size: 0.8rem;
 }
+
+.ant-modal-content {
+	position: relative !important;
+}

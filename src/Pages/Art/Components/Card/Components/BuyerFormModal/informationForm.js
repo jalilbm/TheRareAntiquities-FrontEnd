@@ -24,6 +24,7 @@ const { Paragraph } = Typography;
 export default function InformationForm(props) {
 	const [step, setStep] = useState(1);
 	const [countries, setCountries] = useState([]);
+	// for bank transfer reference
 
 	useEffect(() => {
 		setCountries(countriesJson);
@@ -224,6 +225,9 @@ export default function InformationForm(props) {
 			) : (
 				<div>
 					<div>
+						<Button onClick={handlePayByCrypto} type="primary">
+							Pay By Crypto
+						</Button>
 						<div
 							style={{
 								backgroundColor: "#e9e9e9",
@@ -415,22 +419,17 @@ export default function InformationForm(props) {
 				<Form.Item
 					wrapperCol={{
 						...layout.wrapperCol,
-						offset: 4,
+						offset: 5,
 					}}
 					style={{
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "right",
-						width: "95%",
+						// width: "95%",
 					}}
 				>
 					<div style={{ justifySelf: "flex-end" }}>
 						<div className="center-div">
-							{step === 2 && (
-								<Button className="mx-2" onClick={handlePayByCrypto}>
-									Pay By Crypto
-								</Button>
-							)}
 							<Button type="primary" htmlType="submit">
 								{step === 1 ? "Next" : "Close"}
 							</Button>

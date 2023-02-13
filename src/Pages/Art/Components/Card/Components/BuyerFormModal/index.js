@@ -10,6 +10,11 @@ const BuyerFormModal = (props) => {
 	};
 	const handleCancel = (e) => {
 		props.hideModal();
+		props.setBidData({
+			...props.bidData,
+			bidEmail: "",
+			bidAmount: null,
+		});
 	};
 
 	const updateInputValue = (event) => {

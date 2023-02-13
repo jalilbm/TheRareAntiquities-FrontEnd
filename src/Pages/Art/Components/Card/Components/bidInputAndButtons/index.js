@@ -13,6 +13,18 @@ var regexp = /^\d+(\.\d{1,18})?$/;
 const { Panel } = Collapse;
 const decimalNumberRegex = /^\d*\.?\d*$/;
 
+function randomString() {
+	let result = "";
+	let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	let charactersLength = characters.length;
+	for (let i = 0; i < 16; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
+
+let randomString_ = randomString();
+
 export default function BidInputAndButtons(props) {
 	const [messageApi, contextHolder] = message.useMessage();
 	const [bidData, setBidData] = useState({
@@ -31,6 +43,17 @@ export default function BidInputAndButtons(props) {
 	const location = useLocation();
 	const params = new URLSearchParams(location.search);
 	const paymentStatus = params.get("payment_status");
+
+	function randomString() {
+		let result = "";
+		let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		let charactersLength = characters.length;
+		for (let i = 0; i < 16; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+		return result;
+	}
+
 	const changeMethod = (method) => {
 		setBidMethod(method);
 	};
@@ -486,10 +509,11 @@ export default function BidInputAndButtons(props) {
 				<BuyerFormModal
 					text={"Please enter your information bellow:"}
 					artData={artData}
-					randomString={props.randomString}
+					randomString={randomString_}
 					hideModal={() => {
 						setShowBankTransferModel(false);
 						setBidMethod(null);
+						randomString_ = randomString();
 					}}
 					setBidData={(values) => setBidData(values)}
 					bidData={bidData}
