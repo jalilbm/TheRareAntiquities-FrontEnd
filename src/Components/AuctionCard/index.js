@@ -7,7 +7,6 @@ let { Meta } = Card;
 
 export default function ArtCard(props) {
 	const card = props.card;
-
 	function parseDate(dateString) {
 		const date = new Date(dateString); // Use a dummy year, such as 2000, so that the Date object can be parsed
 		const options = { month: "short" };
@@ -86,10 +85,7 @@ export default function ArtCard(props) {
 						>
 							<p>{card.name}</p>
 							<p>
-								{card.name === "Royal Picasso"
-									? card.collection_arts.length - 1
-									: card.collection_arts.length || 1}{" "}
-								Lot
+								{card.collection_arts.length || 1} Lot
 								{card.collection_arts.length > 1 ? "s" : ""}{" "}
 								{card.auction_address}
 							</p>

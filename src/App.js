@@ -5,6 +5,9 @@ import SignUpLayout from "./Layouts/SignUp";
 import FooterLayout from "./Layouts/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Main from "./Routes";
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-257348869-1");
 
 const customTheme = {
 	token: {

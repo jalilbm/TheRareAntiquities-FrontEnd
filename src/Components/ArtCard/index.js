@@ -50,14 +50,36 @@ export default function ArtCard(props) {
 		>
 			<Meta
 				style={{ color: "white !important" }}
-				title={card.name}
+				title={card.artist_name + " - " + card.name}
 				description={
 					<div>
-						<p className="my-1" style={{ color: "white !important" }}>
+						<p>
 							{card.head.length > 50
 								? card.head.substring(0, 47) + "..."
 								: card.head}
 						</p>
+						<div className="left-div">
+							<p className="p-09 p-600 pre-text">Artist: </p>
+							<p className="p-09">{card.artist_name}</p>
+						</div>
+						<div className="left-div">
+							<p className="p-09 p-600 pre-text">Lot: </p>
+							<p className="p-09">{card.lot}</p>
+						</div>
+						<div className="left-div">
+							<p className="p-09 p-600 pre-text">Buy Now Price: </p>
+							<p className="p-09">
+								${Number(card.buy_now_price).toLocaleString()}
+							</p>
+						</div>
+						<div className="left-div">
+							<p className="p-09 p-600 pre-text">Valuation: </p>
+							<p className="p-09">
+								${Number(card.price_estimation_min).toLocaleString()} - $
+								{Number(card.price_estimation_max).toLocaleString()}
+							</p>
+						</div>
+
 						<div
 							style={{
 								display: "flex",
@@ -70,12 +92,13 @@ export default function ArtCard(props) {
 										<TbLivePhoto
 											style={{
 												fontSize: "1rem",
+												color: "red",
 											}}
 										/>
 									) : (
 										<AiOutlineFieldTime
 											style={{
-												color: "white",
+												color: "red",
 												fontSize: "1.2rem",
 											}}
 										/>

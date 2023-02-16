@@ -101,3 +101,11 @@ button:focus {
 	outline-offset: none !important;
 	box-shadow: none !important;
 }
+
+.p-600 {
+	font-weight: 600;
+}
+
+.p-09 {
+	font-size: 0.9rem;
+}

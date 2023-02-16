@@ -6,6 +6,7 @@ import CardCryptoModal from "../../../../../../Components/Modal";
 import { useLocation } from "react-router-dom";
 import BuyerFormModal from "../BuyerFormModal";
 import { Col, Row } from "react-bootstrap";
+import ReactGA from "react-ga";
 
 // import { w3cwebsocket as W3CWebSocket } from "websocket";
 
@@ -152,9 +153,17 @@ export default function BidInputAndButtons(props) {
 				});
 				setBidMethod(null);
 			} else {
+				if (bidMethod === "card")
+					ReactGA.event({ category: "art", action: "bid", label: "card" });
+				else ReactGA.event({ category: "art", action: "bid", label: "crypto" });
 				setShowEmailModel(true);
 			}
 		} else if (bidMethod === "bank transfer") {
+			ReactGA.event({
+				category: "art",
+				action: "buy now",
+				label: "buy now btn",
+			});
 			setShowBankTransferModel(true);
 		}
 	}, [bidMethod]);
