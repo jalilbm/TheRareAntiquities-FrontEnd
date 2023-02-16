@@ -8,6 +8,7 @@ import Main from "./Routes";
 import ReactGA from "react-ga";
 
 ReactGA.initialize("UA-257348869-1");
+ReactGA.pageview(window.location.pathname);
 
 const customTheme = {
 	token: {
