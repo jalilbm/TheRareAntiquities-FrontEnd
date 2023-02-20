@@ -1,14 +1,16 @@
 import "./index.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { Image, Carousel, Collapse } from "antd";
+import { Image, Carousel, Collapse, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import { TbLivePhoto } from "react-icons/tb";
+import { MdHelp } from "react-icons/md";
 import CountDown from "../../../../Components/CountDown";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import CardBackgroundImage from "../../../../Assets/ArtPageImages/CardBackgroundImage.png";
 import BidInputAndButtons from "./Components/bidInputAndButtons";
 import partnerLogo1 from "../../../../Assets/Logos/partnerLogo1.png";
 import partnerLogo2 from "../../../../Assets/Logos/partnerLogo2.png";
+
 // import ImageGallery from "./Components/ImageGallery";
 
 const { Panel } = Collapse;
@@ -204,6 +206,26 @@ export default function ArtCard(props) {
 															Description:{" "}
 														</span>
 														{artData && artData.head}
+													</p>
+												</div>
+												<div className=".left-div">
+													<p className="measurement">
+														<span style={{ fontWeight: "600" }}>
+															100% Physical Ownership
+														</span>
+														<Tooltip
+															placement="top"
+															title="Bidding for shared ownership of the physical item"
+														>
+															<MdHelp
+																style={{
+																	fontSize: "1rem",
+																	color: "#808080",
+																	cursor: "pointer",
+																}}
+																className="mx-1"
+															/>
+														</Tooltip>
 													</p>
 												</div>
 												<div className=".left-div">

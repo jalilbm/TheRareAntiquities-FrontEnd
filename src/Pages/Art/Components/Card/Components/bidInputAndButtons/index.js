@@ -107,7 +107,7 @@ export default function BidInputAndButtons(props) {
 				} else {
 					messageApi.open({
 						type: "error",
-						content: "Sorry we could not subscribe you, please try again later",
+						content: "Something went wrong, please try again later",
 						duration: 5,
 					});
 				}
@@ -115,7 +115,7 @@ export default function BidInputAndButtons(props) {
 			.catch(() => {
 				messageApi.open({
 					type: "error",
-					content: "Sorry we could not subscribe you, please try again later",
+					content: "Something went wrong, please try again later",
 					duration: 5,
 				});
 			});
@@ -153,10 +153,13 @@ export default function BidInputAndButtons(props) {
 				});
 				setBidMethod(null);
 			} else {
-				if (bidMethod === "card")
+				if (bidMethod === "card") {
 					ReactGA.event({ category: "art", action: "bid", label: "card" });
-				else ReactGA.event({ category: "art", action: "bid", label: "crypto" });
-				setShowEmailModel(true);
+					getPaymentCheckoutUrl(bidMethod);
+				} else {
+					ReactGA.event({ category: "art", action: "bid", label: "crypto" });
+					setShowEmailModel(true);
+				}
 			}
 		} else if (bidMethod === "bank transfer") {
 			ReactGA.event({
@@ -531,7 +534,6 @@ export default function BidInputAndButtons(props) {
 					}}
 					onOk={() => {
 						setShowBankTransferModel(false);
-						// getPaymentCheckoutUrl(bidMethod);
 					}}
 					messageApi={messageApi}
 				/>
