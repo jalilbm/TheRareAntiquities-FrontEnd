@@ -356,7 +356,7 @@ export default function BidInputAndButtons(props) {
 													className="bg-success px-1"
 													style={{ color: "white", fontSize: "0.7rem" }}
 												>
-													Reserve met
+													Sold
 												</span>
 											) : (
 												<span

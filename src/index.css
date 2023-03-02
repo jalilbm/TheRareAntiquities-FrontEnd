@@ -109,3 +109,35 @@ button:focus {
 .p-09 {
 	font-size: 0.9rem;
 }
+
+.ant-select-selection-placeholder {
+	color: red !important;
+}
+
+input::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: grey !important;
+	opacity: 1; /* Firefox */
+}
+input::-webkit-input-placeholder {
+	/* WebKit, Blink, Edge */
+	color: grey !important;
+}
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: grey !important;
+	opacity: 1;
+}
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: grey !important;
+	opacity: 1;
+}
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: grey !important;
+}
+input::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: grey !important;
+}

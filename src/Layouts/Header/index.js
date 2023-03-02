@@ -2,8 +2,9 @@ import RareAntiquitiesLogoBlack from "../../Assets/Logos/RareAntiquitiesLogoBlac
 import "./index.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { TiThMenu } from "react-icons/ti";
 import { Sling as Hamburger } from "hamburger-react";
+import LoginModal from "./Components/LoginModal";
+import { Button } from "antd";
 
 export default function MainHeader() {
 	return (
@@ -71,6 +72,10 @@ export default function MainHeader() {
 										</Nav.Link>
 									</div>
 								</Nav>
+								<LoginModal />
+								{/* <Button type="primary" href="/signin">
+									Sign In
+								</Button> */}
 							</Navbar.Collapse>
 						</div>
 					</Container>

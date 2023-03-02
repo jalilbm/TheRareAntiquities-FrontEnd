@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 let { Meta } = Card;
 
 export default function AuctionsHome(props) {
-	console.log(props.collectionsData);
 	return (
 		<div>
 			<div className="center-div" id="home-auctions-section">
@@ -40,7 +39,7 @@ export default function AuctionsHome(props) {
 													className="primary-gradient-background p-1 my-2"
 													style={{ borderRadius: "23px", border: "none" }}
 												>
-													<AuctionCard card={card} />
+													<AuctionCard card={card} key={card.name} />
 												</div>
 											</Link>
 										</Col>

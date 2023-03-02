@@ -4,6 +4,8 @@ import Art from "../Pages/Art";
 import Auctions from "../Pages/Auctions";
 import Auction from "../Pages/Auction";
 import TermsAndConditions from "../Pages/TermsAndConditions";
+import SignUp from "../Pages/SignUp";
+import SignUpSuccess from "../Pages/SignUp/Components/SignUpSuccess";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import { useEffect } from "react";
 
@@ -38,6 +40,8 @@ export default function Main() {
 				element={<TermsAndConditions />}
 			/>
 			<Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+			<Route exact path="/signup" element={<SignUp />} />
+			<Route exact path="/signup-success" element={<SignUpSuccess />} />
 		</Routes>
 	);
 }
