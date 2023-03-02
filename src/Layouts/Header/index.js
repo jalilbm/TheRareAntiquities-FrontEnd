@@ -72,10 +72,7 @@ export default function MainHeader() {
 										</Nav.Link>
 									</div>
 								</Nav>
-								<LoginModal />
-								{/* <Button type="primary" href="/signin">
-									Sign In
-								</Button> */}
+								{/* <LoginModal /> */}
 							</Navbar.Collapse>
 						</div>
 					</Container>
