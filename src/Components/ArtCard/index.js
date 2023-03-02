@@ -95,19 +95,20 @@ export default function ArtCard(props) {
 												color: "red",
 											}}
 										/>
-									) : (
+									) : new Date(card.auction_start_datetime) > new Date() ? (
 										<AiOutlineFieldTime
 											style={{
 												color: "red",
 												fontSize: "1.2rem",
 											}}
 										/>
-									)}
+									) : null}
 								</div>
 								<p className="px-1 m-0 text-danger">
 									{card.live ? (
 										"Live"
-									) : card.auction_start_datetime ? (
+									) : new Date(card.auction_start_datetime) > new Date() &&
+									  card.auction_start_datetime ? (
 										<CountDown
 											deadline={card.auction_start_datetime}
 											style={{
@@ -116,6 +117,21 @@ export default function ArtCard(props) {
 												margin: "0",
 											}}
 										/>
+									) : card.bought_at_one_price ||
+									  card.total_bids_amount >= card.reserve_price ? (
+										<p
+											className="px-2"
+											style={{
+												color: "white",
+												textAlign: "center",
+												backgroundColor: "#58C84D",
+												borderRadius: "26px",
+												margin: "0",
+											}}
+										>
+											{" "}
+											Sold
+										</p>
 									) : (
 										""
 									)}

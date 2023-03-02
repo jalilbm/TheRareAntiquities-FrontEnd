@@ -327,9 +327,8 @@ export default function BidInputAndButtons(props) {
 				</div>
 			</div> */}
 			{artData &&
-				(artData.live ||
-					artData.bought_at_one_price ||
-					artData.total_bids_amount > 0) && (
+				(artData.live || artData.total_bids_amount > 0) &&
+				!artData.bought_at_one_price && (
 					<div
 						className="center-div py-3"
 						// style={{ fontSize: "0.7rem !important" }}

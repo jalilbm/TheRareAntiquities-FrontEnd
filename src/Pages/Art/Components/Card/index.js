@@ -84,9 +84,28 @@ export default function ArtCard(props) {
 									style={{ position: "relative" }}
 								>
 									<div className="mt-3">
-										<h2 className="my-0">{`${
-											artData && artData.artist_name
-										} - ${artData && artData.name}`}</h2>
+										{(artData && artData.bought_at_one_price) ||
+										(artData &&
+											artData.total_bids_amount >= artData.reserve_price) ? (
+											<p
+												className="px-3"
+												style={{
+													color: "white",
+													textAlign: "center",
+													backgroundColor: "#58C84D",
+												}}
+											>
+												{" "}
+												Sold
+											</p>
+										) : (
+											""
+										)}
+										<h2 className="my-0">
+											{`${artData && artData.artist_name} - ${
+												artData && artData.name
+											}`}
+										</h2>
 										<div style={{ display: "flex", justifyContent: "left" }}>
 											<div className="center-div py-2">
 												{artData && artData.live ? (
@@ -113,7 +132,9 @@ export default function ArtCard(props) {
 															/>
 														</div>
 													</>
-												) : artData && artData.auction_start_datetime ? (
+												) : artData &&
+												  new Date(artData.auction_start_datetime) >
+														new Date() ? (
 													<>
 														<div className="center-div">
 															<AiOutlineFieldTime
